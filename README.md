@@ -1,4 +1,3 @@
 # musicPlayerCplus
 
-### ちょっとメモ代わり
-* コンパイル時 -mwindowsをつける
+mingw-w64とGNUmakeが必要
