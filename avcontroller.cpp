@@ -65,6 +65,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp){
 	char *str2 = "--> A key was pressed!!";
     std::experimental::filesystem::path path_path = std::experimental::filesystem::current_path();
     std::string pwd = path_path.string();
+    char pwd_c[500];
 
 	switch (msg) {
 	case WM_PAINT:
@@ -80,12 +81,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wp, LPARAM lp){
 			return 0;
 
             case 'b':
-				hdc = GetDC(hWnd);
+                sprintf(pwd_c, "%s%s", pwd.c_str(), "\\musics\\mVGVYd1B8Oc.wav");
+				/*
+                hdc = GetDC(hWnd);
 				SetTextColor(hdc, RGB(30, 30, 30));  //文字の色を設定
 				SetBkColor(hdc, RGB(255, 255, 0));  //文字の背景色を設定
-				TextOut(hdc, 10, 40, pwd.c_str(), pwd.length());
-				ReleaseDC(hWnd, hdc);
-                //PlaySound(path+"\\musics\\BnkhBwzBqlQ.mp3", NULL, (SND_ASYNC|SND_FILENAME) );
+				TextOut(hdc, 10, 60, pwd_c, strlen(pwd_c));
+				ReleaseDC(hWnd, hdc);*/
+                
+                PlaySound(pwd_c, NULL, (SND_ASYNC|SND_FILENAME) );
             case 'A': //SHIFT + Aキーが押された時に実行される
 				hdc = GetDC(hWnd);
 				SetTextColor(hdc, RGB(30, 30, 30));  //文字の色を設定
